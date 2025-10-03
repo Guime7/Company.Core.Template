@@ -1,5 +1,5 @@
 ﻿using Company.Core.Template.Application.Features.Products;
-using MediatR;
+using Company.Core.Template.Application.Common.CustomMediator; // <-- Usando nosso namespace
 using Microsoft.AspNetCore.Mvc;
 
 namespace Company.Core.Template.Api.Controllers;
@@ -8,9 +8,10 @@ namespace Company.Core.Template.Api.Controllers;
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly ISender _mediator; // ISender é a nova forma de usar o MediatR, focada apenas em enviar
+    // A única mudança é aqui: de ISender para IMediator
+    private readonly IMediator _mediator;
 
-    public ProductsController(ISender mediator)
+    public ProductsController(IMediator mediator) // E aqui
     {
         _mediator = mediator;
     }
@@ -21,10 +22,12 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> GetProductById(Guid id)
     {
         var query = new GetProductByIdQuery(id);
+
+        // Esta linha não muda NADA!
         var result = await _mediator.Send(query);
 
-        // No futuro, nosso middleware de exceção cuidará do caso de não encontrar, retornando 404.
-        // Por enquanto, o resultado será retornado diretamente.
         return Ok(result);
     }
 }
+
+//8a2e771c-74a9-4a8a-a53a-9c7b3b3a0f1b

@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using MediatR;
+using Company.Core.Template.Application.Common.CustomMediator;
 using Microsoft.Extensions.Logging;
 
 namespace Company.Core.Template.Application.Common.Behaviors;

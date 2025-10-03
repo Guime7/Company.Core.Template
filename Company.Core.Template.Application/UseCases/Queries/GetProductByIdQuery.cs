@@ -1,5 +1,5 @@
 ﻿using Company.Core.Template.Application.Common.Interfaces;
-using MediatR; // Adicione o pacote NuGet MediatR a este projeto
+using Company.Core.Template.Application.Common.CustomMediator;
 
 namespace Company.Core.Template.Application.Features.Products;
 

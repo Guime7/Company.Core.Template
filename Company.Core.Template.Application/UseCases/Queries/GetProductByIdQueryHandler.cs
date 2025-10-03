@@ -1,12 +1,7 @@
 ﻿using Company.Core.Template.Application.Common.Interfaces;
 using Company.Core.Template.Application.Features.Products;
-using MediatR;
+using Company.Core.Template.Application.Common.CustomMediator;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Company.Core.Template.Application.UseCases.Queries;
 // 3. O Handler: A lógica do caso de uso.
