@@ -1,0 +1,6 @@
+@Company.Core.Template_HostAddress = http://localhost:5031
+
+GET {{Company.Core.Template_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
