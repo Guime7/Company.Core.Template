@@ -78,11 +78,7 @@ builder.Services.AddScoped<IMediator, Mediator>();
 //builder.Services.AddScoped<IRequestHandler<GetProductByIdQuery, ProductResponse>, GetProductByIdQueryHandler>();
 
 // 2. Escaneia o assembly da Application e registra todos os IRequestHandlers
-builder.Services.Scan(selector => selector
-    .FromAssemblies(appAssembly) // 1. Look in this assembly
-    .AddClasses(filter => filter.AssignableTo(typeof(IRequestHandler<,>))) // 2. Find classes that look like a handler
-    .AsImplementedInterfaces() // 3. Register them by the interfaces they implement
-    .WithScopedLifetime()); // 4. Use a scoped lifetime for them
+builder.Services.AddRequestHandlersFromAssembly(appAssembly);
 
 // 3. Registra os behaviors (exemplo com nosso TracingBehavior adaptado)
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(TracingBehavior<,>));
